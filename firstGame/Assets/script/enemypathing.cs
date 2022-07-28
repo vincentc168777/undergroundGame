@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+public class enemypathing : MonoBehaviour
+{
+    [SerializeField] NavMeshAgent enemyNav;
+    [SerializeField] GameObject player;
+    [SerializeField] Transform goLocation;
+    private float dist;
+    private bool canChoose;
+    private int randNum;
+    // Start is called before the first frame update
+    void Start()
+    {
+        GetComponent<NavMeshAgent>();
+        canChoose = true;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        dist = Vector3.Distance(transform.position, player.transform.position);
+        monsterPatrol();
+    }
+
+    private void monsterPatrol()
+    {
+        if (dist < 4)
+        {
+            canChoose = false;
+            enemyNav.SetDestination(player.transform.position);
+        }
+        else
+        {
+            while (canChoose)
+            {
+                aNum();
+                canChoose = false;
+            }
+            chooseLocation();
+        }
+        
+    }
+
+    private void aNum()
+    {      
+        randNum = Random.Range(0, goLocation.childCount);      
+    } 
+
+    private void chooseLocation()
+    {       
+        Vector3 patrolPos = goLocation.GetChild(randNum).position;
+        enemyNav.SetDestination(patrolPos);
+        if (transform.position == patrolPos)
+        {
+            canChoose = true;
+        }
+    }
+}
