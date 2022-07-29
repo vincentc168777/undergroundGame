@@ -10,18 +10,22 @@ public class playermov : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask floor;
     [SerializeField] int jumpForce;
+    public int stamina;
     private Vector3 playerInput;
     private Vector2 camInput;
     private float xRot;
     private bool canJump;
     private bool run;
+    private bool canPress;
     private float speed = 2.5f;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        canPress = true;
     }
 
     // Update is called once per frame
@@ -50,10 +54,14 @@ public class playermov : MonoBehaviour
             canJump = true;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
-            run = true;        
+        if(Input.GetKey(KeyCode.LeftShift) && canPress)
+        {
+            run = true;           
+        }          
         else
+        {
             run = false;
+        }
     }
 
     private void fpsCam()
@@ -69,11 +77,21 @@ public class playermov : MonoBehaviour
 
     private void moving()
     {
-        if (run)
-            speed = 3.5f;
+        if(run)
+        {
+            stamina--;
+            sprintStamina();
+        }
         else
+        {
             speed = 2.5f;
-        
+            if(stamina <= 0)
+            {
+                Invoke("resetStamina", 3);
+            }
+            
+        }
+               
         Vector3 moveVec = transform.TransformDirection(playerInput) * speed;
         playerbod.velocity = new Vector3(moveVec.x, playerbod.velocity.y, moveVec.z);
     }
@@ -85,5 +103,29 @@ public class playermov : MonoBehaviour
         {
             playerbod.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+
+    private void sprintStamina()
+    {              
+        speed = 4f;
+        
+        if(stamina <= 0)
+        {
+            canPress = false;
+            run = false;
+        }        
+    }
+
+    private void resetStamina()
+    {
+        
+        stamina = 200;
+        Invoke("resetPress", 2);
+
+    }
+
+    private void resetPress()
+    {
+        canPress = true;
     }
 }
