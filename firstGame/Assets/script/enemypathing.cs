@@ -53,7 +53,7 @@ public class enemypathing : MonoBehaviour
     {       
         Vector3 patrolPos = goLocation.GetChild(randNum).position;
         enemyNav.SetDestination(patrolPos);
-        if (transform.position == patrolPos)
+        if (transform.position.x == patrolPos.x && transform.position.z == patrolPos.z)
         {
             canChoose = true;
         }
