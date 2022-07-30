@@ -17,7 +17,7 @@ public class playermov : MonoBehaviour
     private bool canJump;
     private bool run;
     private bool canPress;
-    private float speed = 2.5f;
+    private float speed = 2f;
     
 
 
@@ -84,7 +84,7 @@ public class playermov : MonoBehaviour
         }
         else
         {
-            speed = 2.5f;
+            speed = 2f;
             if(stamina <= 0)
             {
                 Invoke("resetStamina", 3);
