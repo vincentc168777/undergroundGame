@@ -31,6 +31,7 @@ public class enemypathing : MonoBehaviour
         {
             canChoose = false;
             enemyNav.SetDestination(player.transform.position);
+            enemyNav.stoppingDistance = 1.5f;
         }
         else
         {
@@ -50,7 +51,8 @@ public class enemypathing : MonoBehaviour
     } 
 
     private void chooseLocation()
-    {       
+    {
+        enemyNav.stoppingDistance = 0f;
         Vector3 patrolPos = goLocation.GetChild(randNum).position;
         enemyNav.SetDestination(patrolPos);
         if (transform.position.x == patrolPos.x && transform.position.z == patrolPos.z)
