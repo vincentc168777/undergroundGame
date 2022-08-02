@@ -13,7 +13,7 @@ TagManager:
   - UI
   - player
   - enemy
-  - interact
+  - generator
   - d1
   - blowup
   - d2

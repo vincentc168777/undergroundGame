@@ -21,12 +21,13 @@ public class enemypathing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dist = Vector3.Distance(transform.position, player.transform.position);
+        
         monsterPatrol();
     }
 
     private void monsterPatrol()
     {
+        dist = Vector3.Distance(transform.position, player.transform.position);
         if (dist < 4)
         {
             canChoose = false;

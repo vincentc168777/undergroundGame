@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class lightmanage : MonoBehaviour
 {
     [SerializeField] GameObject monster;
@@ -9,28 +10,29 @@ public class lightmanage : MonoBehaviour
     [SerializeField] Light playerLight;
     private Light lanternLight;
     public static bool genOn;
+    public int chance = 0;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         monster.SetActive(false);
         playerLight.enabled = false;
         genOn = true;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            lightsOff();
-        }
+        
         lanternManage();
         
     }
 
     private void lanternManage()
     {
-        if (genOn == false)
+        if (!genOn)
         {
             for(int i = 0; i < lanterns.transform.childCount; i++)
             {
@@ -44,6 +46,7 @@ public class lightmanage : MonoBehaviour
         }
         else
         {
+            
             monster.SetActive(false);
             playerLight.enabled = false;
             for (int x = 0; x < lanterns.transform.childCount; x++)
@@ -54,7 +57,7 @@ public class lightmanage : MonoBehaviour
         }
     }
 
-    private void lightsOff()
+    public static void lightsOff()
     {
         genOn = false;
     }
