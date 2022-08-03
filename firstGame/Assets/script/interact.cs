@@ -34,9 +34,20 @@ public class interact : MonoBehaviour
             {
                 hitInfo.transform.gameObject.SetActive(false);
                 dynamiteCount++;
-                lightmanage.lightsOff();
+                if(dynamiteCount == 1)
+                {
+                    Invoke("canTurnLightOff", 3);
+                }
+                else if(dynamiteCount == 2)
+                {
+                    Invoke("canTurnLightOff", 6);
+                }
+                else if(dynamiteCount == 3)
+                {
+                    Invoke("canTurnLightOff", 2);
+                }
             }
-            else if(hitInfo.transform.gameObject.name == "cavein")
+            else if(hitInfo.transform.gameObject.name == "gamedoneplane")
             {
                 if (dynamiteCount >= 3)
                     Debug.Log("Gameend");
@@ -45,5 +56,9 @@ public class interact : MonoBehaviour
         }
     }
 
+    private void canTurnLightOff()
+    {
+        lightmanage.lightsOff();
+    }
     
 }

@@ -12,6 +12,7 @@ public class lightmanage : MonoBehaviour
     public static bool genOn;
     
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -33,26 +34,17 @@ public class lightmanage : MonoBehaviour
     {
         if (!genOn)
         {
-            for(int i = 0; i < lanterns.transform.childCount; i++)
-            {
-                lanternLight = lanterns.transform.GetChild(i).GetComponentInChildren<Light>();
-                lanternLight.enabled = false;
-            }
-            
-            playerLight.enabled = true;
+            everyLanternOff();
+              
             //monster spawns
             monster.SetActive(true);
         }
         else
         {
-            
+            everyLanternOn();
             monster.SetActive(false);
             playerLight.enabled = false;
-            for (int x = 0; x < lanterns.transform.childCount; x++)
-            {
-                lanternLight = lanterns.transform.GetChild(x).GetComponentInChildren<Light>();
-                lanternLight.enabled = true;
-            }
+            
         }
     }
 
@@ -64,6 +56,26 @@ public class lightmanage : MonoBehaviour
     public static void turnOn()
     {
         genOn = true;
+    }
+
+    private void everyLanternOff()
+    {
+        for (int i = 0; i < lanterns.transform.childCount; i++)
+        {
+            lanternLight = lanterns.transform.GetChild(i).GetComponentInChildren<Light>();
+            lanternLight.enabled = false;
+        }
+        playerLight.enabled = true;
+
+    }
+
+    private void everyLanternOn()
+    {
+        for (int x = 0; x < lanterns.transform.childCount; x++)
+        {
+            lanternLight = lanterns.transform.GetChild(x).GetComponentInChildren<Light>();
+            lanternLight.enabled = true;
+        }
     }
 
 }
