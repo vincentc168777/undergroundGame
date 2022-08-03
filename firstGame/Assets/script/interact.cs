@@ -27,7 +27,9 @@ public class interact : MonoBehaviour
         if (canInteract && Input.GetKeyDown(KeyCode.E))
         {
             if(hitInfo.transform.gameObject.name == "generator")
+            {
                 lightmanage.turnOn();
+            }        
             else if(hitInfo.transform.gameObject.name == "dynamite")
             {
                 hitInfo.transform.gameObject.SetActive(false);

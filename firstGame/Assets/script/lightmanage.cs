@@ -10,7 +10,6 @@ public class lightmanage : MonoBehaviour
     [SerializeField] Light playerLight;
     private Light lanternLight;
     public static bool genOn;
-    public int chance = 0;
     
     
     // Start is called before the first frame update
@@ -67,5 +66,4 @@ public class lightmanage : MonoBehaviour
         genOn = true;
     }
 
-    
 }
