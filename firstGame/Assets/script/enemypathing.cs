@@ -28,7 +28,7 @@ public class enemypathing : MonoBehaviour
     private void monsterPatrol()
     {
         dist = Vector3.Distance(transform.position, player.transform.position);
-        if (dist < 4)
+        if (dist < 5)
         {
             canChoose = false;
             enemyNav.SetDestination(player.transform.position);
@@ -36,6 +36,7 @@ public class enemypathing : MonoBehaviour
         }
         else
         {
+            
             while (canChoose)
             {
                 aNum();
