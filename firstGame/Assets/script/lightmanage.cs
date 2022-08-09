@@ -18,7 +18,7 @@ public class lightmanage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        monster.SetActive(false);
+        //monster.SetActive(false);
         
         genOn = true;
         
@@ -45,7 +45,7 @@ public class lightmanage : MonoBehaviour
         else
         {
             everyLanternOn();
-            monster.SetActive(false);
+            //monster.SetActive(false);
             playerLight.SetActive(false);
 
         }
