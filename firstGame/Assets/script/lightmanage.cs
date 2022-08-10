@@ -8,7 +8,7 @@ public class lightmanage : MonoBehaviour
     [SerializeField] GameObject monster;
     [SerializeField] GameObject lanterns;
     [SerializeField] GameObject playerLight;
-
+    [SerializeField] GameObject lightInLantern;
     private Light lanternLight;
     public static bool genOn;
     
@@ -65,7 +65,7 @@ public class lightmanage : MonoBehaviour
     {
         for (int i = 0; i < lanterns.transform.childCount; i++)
         {
-            lanternLight = lanterns.transform.GetChild(i).GetComponentInChildren<Light>();
+            lanternLight = lanterns.transform.GetChild(i).gameObject.GetComponentInChildren<Light>();
             lanternLight.enabled = false;
         }
         
@@ -77,7 +77,7 @@ public class lightmanage : MonoBehaviour
     {
         for (int x = 0; x < lanterns.transform.childCount; x++)
         {
-            lanternLight = lanterns.transform.GetChild(x).GetComponentInChildren<Light>();
+            lanternLight = lanterns.transform.GetChild(x).gameObject.GetComponentInChildren<Light>();
             lanternLight.enabled = true;
         }
     }
