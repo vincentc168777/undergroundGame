@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - lighter
   - Water
   - UI
   - player
@@ -19,7 +19,7 @@ TagManager:
   - d2
   - d3
   - floor
-  - lighter
+  - 
   - 
   - 
   - 
