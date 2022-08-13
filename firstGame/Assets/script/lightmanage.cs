@@ -8,7 +8,7 @@ public class lightmanage : MonoBehaviour
     [SerializeField] GameObject monster;
     [SerializeField] GameObject lanterns;
     [SerializeField] GameObject playerLight;
-    [SerializeField] GameObject lightInLantern;
+    
     private Light lanternLight;
     public static bool genOn;
     

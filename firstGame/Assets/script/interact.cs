@@ -9,6 +9,7 @@ public class interact : MonoBehaviour
     [SerializeField] LayerMask interactLayer;
     [SerializeField] GameObject player;
     [SerializeField] GameObject textPrompt;
+    [SerializeField] GameObject pickupText;
     [SerializeField] GameObject playerLight;
 
     private bool canInteract;
@@ -18,6 +19,7 @@ public class interact : MonoBehaviour
     {
         playerLight.SetActive(false);
         textPrompt.SetActive(false);
+        pickupText.SetActive(false);
     }
 
 
@@ -32,40 +34,49 @@ public class interact : MonoBehaviour
     {
         Ray interacting = new Ray(interactCam.transform.position, interactCam.transform.forward);
         canInteract = Physics.Raycast(interacting, out RaycastHit hitInfo, range, interactLayer);
-        if (canInteract && Input.GetKeyDown(KeyCode.E))
+        if (canInteract)
         {
-            if(hitInfo.transform.gameObject.name == "generator")
+            pickupText.SetActive(true);
+            if(Input.GetKeyDown(KeyCode.E))
             {
-                lightmanage.turnOn();
-            }        
-            else if(hitInfo.transform.gameObject.name == "dynamite")
-            {
-                hitInfo.transform.gameObject.SetActive(false);
-                dynamiteCount++;
-                if(dynamiteCount == 1)
+                if (hitInfo.transform.gameObject.name == "generator")
                 {
-                    Invoke("canTurnLightOff", 3);
-                    Invoke("appearText", 4);
-                    Invoke("lighterOn", 5);
-                    Invoke("noText", 8);
+                    lightmanage.turnOn();
                 }
-                else if(dynamiteCount == 2)
+                else if (hitInfo.transform.gameObject.name == "dynamite")
                 {
-                    Invoke("canTurnLightOff", 6);
-                    Invoke("lighterOn", 7);
+                    hitInfo.transform.gameObject.SetActive(false);
+                    dynamiteCount++;
+                    if (dynamiteCount == 1)
+                    {
+                        Invoke("canTurnLightOff", 3);
+                        Invoke("appearText", 4);
+                        Invoke("lighterOn", 5);
+                        Invoke("noText", 8);
+                    }
+                    else if (dynamiteCount == 2)
+                    {
+                        Invoke("canTurnLightOff", 6);
+                        Invoke("lighterOn", 7);
+                    }
+                    else if (dynamiteCount == 3)
+                    {
+                        Invoke("canTurnLightOff", 2);
+                        Invoke("lighterOn", 3);
+                    }
                 }
-                else if(dynamiteCount == 3)
+                else if (hitInfo.transform.gameObject.name == "gamedoneplane")
                 {
-                    Invoke("canTurnLightOff", 2);
-                    Invoke("lighterOn", 3);
+                    if (dynamiteCount >= 3)
+                        Debug.Log("Gameend");
                 }
-            }
-            else if(hitInfo.transform.gameObject.name == "gamedoneplane")
-            {
-                if (dynamiteCount >= 3)
-                    Debug.Log("Gameend");
             }
             
+            
+        }
+        else
+        {
+            pickupText.SetActive(false);
         }
     }
 
