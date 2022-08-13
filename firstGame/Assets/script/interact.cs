@@ -11,7 +11,7 @@ public class interact : MonoBehaviour
     [SerializeField] GameObject textPrompt;
     [SerializeField] GameObject pickupText;
     [SerializeField] GameObject playerLight;
-
+    [SerializeField] GameObject blowUpCheck;
     private bool canInteract;
     public int dynamiteCount = 0;
 
@@ -20,6 +20,7 @@ public class interact : MonoBehaviour
         playerLight.SetActive(false);
         textPrompt.SetActive(false);
         pickupText.SetActive(false);
+        blowUpCheck.SetActive(false);
     }
 
 
@@ -36,41 +37,27 @@ public class interact : MonoBehaviour
         canInteract = Physics.Raycast(interacting, out RaycastHit hitInfo, range, interactLayer);
         if (canInteract)
         {
+            
             pickupText.SetActive(true);
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                if (hitInfo.transform.gameObject.name == "generator")
+            
+                if (hitInfo.transform.gameObject.name == "generator" && Input.GetKeyDown(KeyCode.E))
                 {
                     lightmanage.turnOn();
                 }
-                else if (hitInfo.transform.gameObject.name == "dynamite")
+                else if (hitInfo.transform.gameObject.name == "dynamite" && Input.GetKeyDown(KeyCode.E))
                 {
                     hitInfo.transform.gameObject.SetActive(false);
-                    dynamiteCount++;
-                    if (dynamiteCount == 1)
-                    {
-                        Invoke("canTurnLightOff", 3);
-                        Invoke("appearText", 4);
-                        Invoke("lighterOn", 5);
-                        Invoke("noText", 8);
-                    }
-                    else if (dynamiteCount == 2)
-                    {
-                        Invoke("canTurnLightOff", 6);
-                        Invoke("lighterOn", 7);
-                    }
-                    else if (dynamiteCount == 3)
-                    {
-                        Invoke("canTurnLightOff", 2);
-                        Invoke("lighterOn", 3);
-                    }
+                    dyanmiteEventManage();
+                      
                 }
-                else if (hitInfo.transform.gameObject.name == "gamedoneplane")
+                else if (hitInfo.transform.gameObject.name == "gamedoneplane" && Input.GetKeyDown(KeyCode.E))
                 {
                     if (dynamiteCount >= 3)
                         Debug.Log("Gameend");
+                    
+                    
                 }
-            }
+            
             
             
         }
@@ -99,5 +86,28 @@ public class interact : MonoBehaviour
     private void lighterOn()
     {
         playerLight.SetActive(true);
+    }
+
+    private void dyanmiteEventManage()
+    {
+        
+        dynamiteCount++;
+        if (dynamiteCount == 1)
+        {
+            Invoke("canTurnLightOff", 3);
+            Invoke("appearText", 4);
+            Invoke("lighterOn", 5);
+            Invoke("noText", 8);
+        }
+        else if (dynamiteCount == 2)
+        {
+            Invoke("canTurnLightOff", 6);
+            Invoke("lighterOn", 7);
+        }
+        else if (dynamiteCount == 3)
+        {
+            Invoke("canTurnLightOff", 2);
+            Invoke("lighterOn", 3);
+        }
     }
 }

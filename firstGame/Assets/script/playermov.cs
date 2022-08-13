@@ -10,6 +10,7 @@ public class playermov : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask floor;
     [SerializeField] int jumpForce;
+    
     public int stamina;
     private Vector3 playerInput;
     private Vector2 camInput;
@@ -53,6 +54,8 @@ public class playermov : MonoBehaviour
         {
             canJump = true;
         }
+
+        
 
         if(Input.GetKey(KeyCode.LeftShift) && canPress)
         {
@@ -102,6 +105,7 @@ public class playermov : MonoBehaviour
         if(Physics.OverlapSphere(groundCheck.position, 0.1f, floor).Length > 0)
         {
             playerbod.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            
         }
     }
 
@@ -128,4 +132,5 @@ public class playermov : MonoBehaviour
     {
         canPress = true;
     }
+
 }
