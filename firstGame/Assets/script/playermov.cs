@@ -32,9 +32,13 @@ public class playermov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inputManage();
+        if(!pause.paused)
+        {
+            inputManage();
 
-        fpsCam();
+            fpsCam();
+        }
+        
     }
 
     private void FixedUpdate()
