@@ -5,6 +5,7 @@ using UnityEngine;
 public class playermov : MonoBehaviour
 {
     [SerializeField] Camera cam;
+    
     [SerializeField] int sensitivity;
     [SerializeField] Rigidbody playerbod;
     [SerializeField] Transform groundCheck;
@@ -48,6 +49,7 @@ public class playermov : MonoBehaviour
         if (canJump)
             jump();
     }
+
     private void inputManage()
     {
         playerInput = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
@@ -86,7 +88,7 @@ public class playermov : MonoBehaviour
     {
         if(run)
         {
-            stamina--;
+          
             sprintStamina();
         }
         else
@@ -96,6 +98,7 @@ public class playermov : MonoBehaviour
             {
                 Invoke("resetStamina", 3);
             }
+            
             
         }
                
@@ -114,7 +117,8 @@ public class playermov : MonoBehaviour
     }
 
     private void sprintStamina()
-    {              
+    {
+        stamina--;
         speed = 4f;
         
         if(stamina <= 0)
@@ -128,7 +132,7 @@ public class playermov : MonoBehaviour
     {
         
         stamina = 200;
-        Invoke("resetPress", 2);
+        resetPress();
 
     }
 
@@ -137,4 +141,5 @@ public class playermov : MonoBehaviour
         canPress = true;
     }
 
+    
 }

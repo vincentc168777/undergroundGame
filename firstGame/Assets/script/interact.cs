@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class interact : MonoBehaviour
 {
@@ -52,10 +53,9 @@ public class interact : MonoBehaviour
                 }
                 else if (hitInfo.transform.gameObject.name == "gamedoneplane" && Input.GetKeyDown(KeyCode.E))
                 {
-                    if (dynamiteCount >= 3)
-                        Debug.Log("Gameend");
-                    
-                    
+                if (dynamiteCount >= 3)
+                    SceneManager.LoadScene("endgame");
+                         
                 }
             
             
