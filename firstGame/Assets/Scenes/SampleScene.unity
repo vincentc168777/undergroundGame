@@ -18263,11 +18263,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1260185827 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8063841327315022457, guid: 17161ed1515ab064faf244652f77544c, type: 3}
-  m_PrefabInstance: {fileID: 438891830}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1261267699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18345,24 +18340,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17161ed1515ab064faf244652f77544c, type: 3}
---- !u!1 &1261938730 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8063841327315022457, guid: 17161ed1515ab064faf244652f77544c, type: 3}
-  m_PrefabInstance: {fileID: 1451778228}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1261938734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261938730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461272070190dd54b86574d890e06db1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wood: {fileID: 2089812443}
 --- !u!1001 &1262989578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25610,7 +25587,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 33e0d08ab7fdacf45a34b33cafab2754, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.38
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -28153,19 +28130,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7251732570873374915, guid: 17161ed1515ab064faf244652f77544c, type: 3}
   m_PrefabInstance: {fileID: 438891830}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1891659165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1260185827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 461272070190dd54b86574d890e06db1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wood: {fileID: 2089812443}
 --- !u!1001 &1894946300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30812,7 +30776,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bc808fac8cbb73e4b860e46c65a900eb, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.28
   m_Pitch: 1
   Loop: 0
   Mute: 0
